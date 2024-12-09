@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="layout :: head"></head>
+  <body class="d-flex flex-column min-vh-100">
+    <div th:replace="layout :: header"></div>
+
+    <div class="container my-5">
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome to Student Journal</h1>
+        <p class="lead">
+          Keep track of your learning journey with organized journal entries.
+        </p>
+        <hr class="my-4" />
+        <p>Start writing your academic thoughts and experiences today.</p>
+        <a class="btn btn-primary btn-lg" href="/journals/new" role="button"
+          >Create New Entry</a
+        >
+      </div>
+    </div>
+
+    <div th:replace="layout :: footer"></div>
+  </body>
+</html>
