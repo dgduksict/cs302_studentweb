@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .headers(headers -> headers
                         .frameOptions(frame -> frame.sameOrigin()))  // Updated frame options config
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/register", "/login", "/journal", "/h2-console/**", "/auth/register", "/auth/login", "/about","/css/**", "/js/**", "/error").permitAll()
+                        .requestMatchers("/", "/register", "/login", "/journal", "/journal/**", "/h2-console/**", "/auth/register", "/auth/login", "/about","/css/**", "/js/**", "/error").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form

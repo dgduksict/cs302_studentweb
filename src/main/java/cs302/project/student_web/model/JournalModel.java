@@ -2,7 +2,6 @@ package cs302.project.student_web.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -22,14 +21,65 @@ public class JournalModel {
     @Column
     private String author;
 
+    @Column
+    private String subject;
+
+    @Column
+    private String studentName;
+
+    @Column(columnDefinition = "TEXT")
+    private String content;
+
     private LocalDateTime createdAt;
+
+    private Long userId;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
     }
 
-    private Long userId;
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    // Getters and Setters
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    // Even though @Data should generate these, let's add them explicitly
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public String getTitle() {
         return title;

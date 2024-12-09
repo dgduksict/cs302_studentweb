@@ -4,6 +4,47 @@
   <body class="d-flex flex-column min-vh-100">
     <div th:replace="layout :: header"></div>
 
+    <div class="container my-5">
+      <h2 class="mb-4">Journal Entries</h2>
+
+      <div class="row">
+        <div th:each="journal : ${journals}" class="col-md-6 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <a th:href="@{/journal/{id}(id=${journal.getId()})}"
+                   th:text="${journal.getTitle()}"
+                   class="text-decoration-none">Journal Title</a>
+              </h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <span th:text="${journal.getStudentName()}">Student Name</span>
+                <span th:if="${journal.getCreatedAt() != null}">
+                                    - <span th:text="${#temporals.format(journal.getCreatedAt(), 'dd-MM-yyyy HH:mm')}">Date</span>
+                                </span>
+              </h6>
+              <p class="card-text" th:text="${journal.getSubject()}">Subject</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Show message if no journals exist -->
+      <div th:if="${#lists.isEmpty(journals)}" class="alert alert-info">
+        No journal entries found.
+      </div>
+    </div>
+
+    <div th:replace="layout :: footer"></div>
+  </body>
+</html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--  <head th:replace="layout :: head"></head>-->
+<!--  <body class="d-flex flex-column min-vh-100">-->
+<!--    <div th:replace="layout :: header"></div>-->
+
 <!--    <div class="container my-5">-->
 <!--      <h2-->
 <!--        th:text="${journal.id} ? 'Edit Journal Entry' : 'New Journal Entry'"-->
@@ -71,6 +112,6 @@
 <!--      </form>-->
 <!--    </div>-->
 
-    <div th:replace="layout :: footer"></div>
-  </body>
-</html>
+<!--    <div th:replace="layout :: footer"></div>-->
+<!--  </body>-->
+<!--</html>-->
