@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: student-web
+  template:
+    metadata:
+      labels:
+        app: student-web
+    spec:
+      imagePullSecrets:
+        - name: quay-registry-secret
+      containers:
+        - name: my-spring-boot
+          image: quay.io/shiro38/student-web
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
