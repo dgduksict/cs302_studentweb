@@ -29,6 +29,9 @@ public class SecurityConfig {
                         .frameOptions(frame -> frame.sameOrigin()))  // Updated frame options config
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/", "/register", "/login", "/journal", "/journal/**", "/h2-console/**", "/auth/register", "/auth/login", "/about","/css/**", "/js/**", "/error").permitAll()
+                        .requestMatchers("/journal/list").permitAll()
+                        .requestMatchers("/journal/create").permitAll()
+                        .requestMatchers("/journal/{id}").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
